@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <!-- component -->
+    <div>
+      <div>
+        <div>
+          <h1>Bienvenido {{current_user.name}}</h1>
+          <div>
+            <form method="POST" enctype="multipart/form-data">
+              <input
+                placeholder="Add Todo"
+                id="description"
+                name="description"
+              />
+              <button
+                type="submit"
+              >
+                Add
+              </button>
+            </form>
+          </div>
+        </div>
+        <div>
+          {% for todo in todos %}
+          <div>
+            <p>{{ todo.description }}</p>
+            {% if todo.is_completed %}
+            <button
+            >
+              Done
+            </button>
+            {% else %}
+            <a
+              href="/update/{{ todo.id }}"
+            >
+              Not Done
+            </a>
+            {% endif %}
+            <a
+              href="/delete/{{ todo.id }}"
+            >
+              Remove
+            </a>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
